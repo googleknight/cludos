@@ -1,0 +1,46 @@
+{
+  "name": "cludos",
+  "version": "1.0.0",
+  "description": "A minimal Hapi16 project with CRUD operations to learn docker and deployment.",
+  "main": "server.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint . --ignore-path .gitignore",
+    "lint-fix": "npm run lint -- --fix",
+    "start-local": "NODE_ENV=local nodemon --inspect server.js",
+    "start": "node server.js",
+    "test-debug": "watch 'npm test' ./test . --wait=1",
+    "test": "npm run lint && NODE_ENV=test lab -v -t 85 && npm run test-coverage:html",
+    "test-coverage:html": "NODE_ENV=test lab -r html -o ./coverage/coverage.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/googleknight/cludos.git"
+  },
+  "author": "Shubham Mathur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/googleknight/cludos/issues"
+  },
+  "homepage": "https://github.com/googleknight/cludos#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "git-hooks": "^1.1.10",
+    "husky": "^1.3.1",
+    "lab": "^18.0.1",
+    "sinon": "^7.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
+  },
+  "dependencies": {
+    "hapi": "^16.7.0",
+    "hapi-swagger": "^7.10.0",
+    "joi": "^14.3.1"
+  }
+}
